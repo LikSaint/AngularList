@@ -83,7 +83,7 @@
         <form class="modal-body" name="modalbody">
             <div class="form-group">
                 <div class="moneyCont">
-                    <input class="form-control" name="money" ng-model="money" placeholder="Средства" moneycheck>
+                    <input class="form-control" name="money" ng-model="money" placeholder="Средства" moneycheck required>
                     <div class="errorComment" ng-show="modalbody.$error.moneycheck">
                         <span class="errorNote">!</span>
                         <span>Неверное значение</span>
@@ -93,7 +93,7 @@
             </div>
             <div class="form-group">
                 <div class="commentCont">
-                    <textarea class="form-control textArea" name="comment" ng-model="comment" placeholder = "Комментарий" rows="6" commentcheck></textarea>
+                    <textarea class="form-control textArea" name="comment" ng-model="comment" placeholder = "Комментарий" rows="6" commentcheck required></textarea>
                     <div class="errorComment" ng-show="modalbody.$error.commentcheck">
                         <span class="errorNote">!</span>
                         <span>Неверное значение</span>
