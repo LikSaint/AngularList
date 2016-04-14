@@ -66,7 +66,7 @@
         </div>
 
             <div class="form-group">
-                <div>
+                <div class="bottomButtons">
                     <button class="btn btn-default addButton" ng-click="open()">Добавить</button>
                     <dir-pagination-controls
                             max-size="5"
@@ -93,7 +93,7 @@
             </div>
             <div class="form-group">
                 <div class="commentCont">
-                    <textarea class="form-control textarea" ng-model="comment" placeholder = "Комментарий" rows="6" ng-change="checkCorrection('comment')"></textarea>
+                    <textarea class="form-control textArea" ng-model="comment" placeholder = "Комментарий" rows="6" ng-change="checkCorrection('comment')"></textarea>
                     <div class="errorComment" ng-show="showErrorComment">
                         <span class="errorNote">!</span>
                         <span>Неверное значение</span>

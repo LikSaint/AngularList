@@ -55,7 +55,8 @@ thead td:nth-child(1){
 	width: 113px;
 }
 thead td:nth-child(2){
-	width: 292px;
+	max-width: 292px;
+	min-width: 135px;
 }
 td{
 	border-right: 1px solid #e7ebed;
@@ -138,7 +139,7 @@ td{
 .modal-body{
 	margin: 0 50px;
 }
-.textarea{
+.textArea{
 	padding-left:15px;
 	padding-top:7px;
 	resize:none;
@@ -208,14 +209,19 @@ td{
 	margin:0px;
 	color: #d92700;
 }
-.pagination>li>a, .pagination>li>a:hover {
+.pagination>li>a {
 	width: 42px;
 	height: 42px;
-	color: #d92700;
 	margin-left:5px;
 	border-radius: 5px;
 	text-align: center;
 	padding-top:11px;
+}
+.pagination>li:first-child>a {
+	margin-left:0px;
+}
+.pagination>li>a, .pagination>li>a:hover {
+	color: #d92700;
 }
 .pagination>li>a:hover {
 	border-color: #ff2d00;
@@ -233,3 +239,11 @@ td{
 	background-color: #ff2d00;
 	border-color: #ff2d00;
 }
+@media (max-width:499px) {
+	.bottomButtons{
+		text-align: center;
+	}
+	.pagination{
+		margin-top:10px;
+		float: none;
+}}
