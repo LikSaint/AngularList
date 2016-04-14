@@ -80,11 +80,11 @@
         <div class="modal-header"> 
             <h3 class="modal-title">Запись # {{currentID}}</h3>
         </div>
-        <div class="modal-body">
+        <form class="modal-body" name="modalbody">
             <div class="form-group">
                 <div class="moneyCont">
-                    <input class="form-control" ng-model="money" placeholder="Средства" ng-change="checkCorrection('money')">
-                    <div class="errorComment" ng-show="showErrorMoney">
+                    <input class="form-control" name="money" ng-model="money" placeholder="Средства" moneycheck>
+                    <div class="errorComment" ng-show="modalbody.$error.moneycheck">
                         <span class="errorNote">!</span>
                         <span>Неверное значение</span>
                         <span class="arrow-left"></span>
@@ -93,19 +93,19 @@
             </div>
             <div class="form-group">
                 <div class="commentCont">
-                    <textarea class="form-control textArea" ng-model="comment" placeholder = "Комментарий" rows="6" ng-change="checkCorrection('comment')"></textarea>
-                    <div class="errorComment" ng-show="showErrorComment">
+                    <textarea class="form-control textArea" name="comment" ng-model="comment" placeholder = "Комментарий" rows="6" commentcheck></textarea>
+                    <div class="errorComment" ng-show="modalbody.$error.commentcheck">
                         <span class="errorNote">!</span>
                         <span>Неверное значение</span>
                         <span class="arrow-left"></span>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="modal-footer">
             <div class="form-group">
                 <div class="addCont">
-                    <button class="btn btn-default addButton" ng-click="addItem()">Сохранить</button>
+                    <button class="btn btn-default addButton" ng-click="addItem(modalbody)">Сохранить</button>
                 </div>
             </div>
             <div class="form-group">
