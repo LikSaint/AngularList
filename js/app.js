@@ -58,9 +58,6 @@ purchaseApp.controller('purchaseController', function ($scope, $uibModal, $log) 
             size: "",
             scope: $scope,
             resolve: {
-                add: function () {
-                    return;
-                }
             }
         });
 
@@ -89,9 +86,15 @@ purchaseApp.controller('purchaseController', function ($scope, $uibModal, $log) 
     $scope.sort = function (fieldName) {
         if ($scope.sortField === fieldName) {
             $scope.reverse = !$scope.reverse;
+            if(window.location.hash == "#" + fieldName + "down"){
+                window.location.hash = "#" + fieldName + "up"
+            } else {
+                window.location.hash = "#" + fieldName + "down"
+            };
         } else {
             $scope.sortField = fieldName;
             $scope.reverse = false;
+            window.location.hash = "#" + fieldName + "up";
         }
     };
 
@@ -101,6 +104,17 @@ purchaseApp.controller('purchaseController', function ($scope, $uibModal, $log) 
     $scope.isSortDown = function (fieldName) {
         return $scope.sortField === fieldName && $scope.reverse;
     };
+    if(window.location.hash == "#idup"){
+        $scope.sort('id');
+    } else if(window.location.hash == "#iddown"){
+        $scope.sort('id');
+        $scope.reverse = true;
+    }else if(window.location.hash == "#moneyup"){
+        $scope.sort('money');
+    } else if(window.location.hash == "#moneydown"){
+        $scope.sort('money');
+        $scope.reverse = true;
+    }
 });
 
 angular.module('purchaseApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
@@ -118,27 +132,6 @@ angular.module('purchaseApp').controller('ModalInstanceCtrl', function ($scope, 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-
-    /*
-     $scope.checkCorrection = function(element){
-     result = true;
-     if((element == undefined )||(element == "money")){
-     if(/-?[1-9]+.?/.test($scope.money) && ($scope.money <1000 && $scope.money >-1000 && $scope.money !=0)){
-     $scope.showErrorMoney= false;
-     }else{
-     $scope.showErrorMoney= true;
-     result = false;
-     }}
-
-     if((element == undefined )||(element == "comment")){
-     if($scope.comment && !(/[^[/|,|!|?|;|:|"|'|\w|\s|\n|[а-я]|[0-9]]]*!/ig.test($scope.comment)) && $scope.comment.length < 512 ){
-     $scope.showErrorComment = false;
-     } else {
-     $scope.showErrorComment = true;
-     result = false;
-     }}
-     return result;
-     }  */
 });
 purchaseApp.directive('commentcheck', function () {
     return {
@@ -161,7 +154,7 @@ purchaseApp.directive('moneycheck', function () {
         require: 'ngModel',
         link: function (scope, elm, attrs, ctrl) {
             ctrl.$parsers.unshift(function (money) {
-                if (/-?[1-9]+.?/.test(money) && (money <1000 && money >-1000 && money !=0)) {
+                if (/-?[1-9]+.?[1-9]{0,2}/.test(money) && (money < 1000 && money > -1000 && money != 0)) {
                     console.log("valid");
                     ctrl.$setValidity('moneycheck', true);
                     return money;
@@ -174,3 +167,4 @@ purchaseApp.directive('moneycheck', function () {
         }
     };
 });
+
