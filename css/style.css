@@ -54,8 +54,7 @@ thead td:nth-child(1){
 	width: 113px;
 }
 thead td:nth-child(2){
-	max-width: 292px;
-	min-width: 135px;
+	width: 150px;
 }
 td{
 	border-right: 1px solid #e7ebed;
@@ -213,7 +212,7 @@ td{
 .pagination>li>a {
 	width: 42px;
 	height: 42px;
-	margin-left:5px;
+	margin-left:6px;
 	border-radius: 5px;
 	text-align: center;
 	padding-top:11px;
@@ -241,10 +240,33 @@ td{
 	border-color: #ff2d00;
 }
 @media (max-width:499px) {
+
+	thead td:nth-child(1){
+		width: 60px;
+	}
+	thead td:nth-child(2){
+		width: 120px;
+	}
+	td > span {
+		margin-left: 10px;
+	}
 	.bottomButtons{
 		text-align: center;
 	}
 	.pagination{
 		margin-top:10px;
 		float: none;
-}}
+	}
+}
+
+@media (max-width:350px) {
+	.pagination>li>a {
+		width: 22px;
+		height: 22px;
+		margin-left: 4px;
+		border-radius: 2px;
+		padding-top: 0px;
+		text-align: left;
+		padding-left: 6px;
+	}
+}
