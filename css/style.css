@@ -220,8 +220,9 @@ td{
 .pagination>li:first-child>a {
 	margin-left:0px;
 }
-.pagination>li>a, .pagination>li>a:hover {
+.pagination>li>a, .pagination>li>a:focus{
 	color: #ff2c00;
+	background: white;
 }
 .pagination>li>a:hover {
 	border-color: #ff2d00;
@@ -231,13 +232,20 @@ td{
 .pagination>li>a:active {
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#d92700), to(#ff2d00));
 	border-color: rgba(255, 45, 0, 0.51);
-
+	color: white;
 }
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
 	color: #fff;
 	cursor: default;
 	background-color: #ff2d00;
 	border-color: #ff2d00;
+}
+
+.pagination>li.disabled>a, .pagination>li.disabled>a:focus, .pagination>li.disabled>a:hover{
+	color: #777;
+	cursor: not-allowed;
+	background: #fff;
+	border-color: #ddd;
 }
 @media (max-width:499px) {
 
