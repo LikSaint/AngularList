@@ -268,6 +268,10 @@ td{
 }
 
 @media (max-width:350px) {
+
+	td > span {
+		margin-left: 5px;
+	}
 	.pagination>li>a {
 		width: 22px;
 		height: 22px;
