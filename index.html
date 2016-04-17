@@ -77,43 +77,45 @@
             </div>
 
         <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header"> 
-            <h3 class="modal-title">Запись # {{currentID}}</h3>
-        </div>
-        <form class="modal-body" name="modalbody">
-            <div class="form-group">
-                <div class="moneyCont">
-                    <input class="form-control" name="money" ng-model="money" placeholder="Средства" moneycheck required>
-                    <div class="errorComment" ng-show="modalbody.$error.moneycheck">
-                        <span class="errorNote">!</span>
-                        <span>Неверное значение</span>
-                        <span class="arrow-left"></span>
+            <form name="modalForm">
+                <div class="modal-header">
+                    <h3 class="modal-title"  ng-click="login(modalForm)">Запись # {{currentID}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="moneyCont">
+                            <input class="form-control" name="money" ng-model="money" placeholder="Средства" moneycheck required>
+                                <div class="errorComment" ng-show="(modalForm.addButton.$touched && modalForm.money.$invalid) || modalForm.$error.moneycheck" >
+                                <span class="errorNote">!</span>
+                                <span>Неверное значение</span>
+                                <span class="arrow-left"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="commentCont">
+                            <textarea class="form-control textArea" name="comment" ng-model="comment" placeholder = "Комментарий" rows="6"  commentcheck required></textarea>
+                            <div class="errorComment" ng-show="(modalForm.addButton.$touched && modalForm.comment.$invalid) || modalForm.$error.commentcheck">
+                                <span class="errorNote">!</span>
+                                <span>Неверное значение</span>
+                                <span class="arrow-left"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="commentCont">
-                    <textarea class="form-control textArea" name="comment" ng-model="comment" placeholder = "Комментарий" rows="6" commentcheck required></textarea>
-                    <div class="errorComment" ng-show="modalbody.$error.commentcheck">
-                        <span class="errorNote">!</span>
-                        <span>Неверное значение</span>
-                        <span class="arrow-left"></span>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="addCont">
+                            <button class="btn btn-default addButton" ng-click="addItem(modalForm)" ng-model="addButton" name="addButton" formnovalidate>Сохранить</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cancelCont">
+                            <button class="btn btn-default cancelButton" ng-click="cancel()" formnovalidate>Отменить</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <div class="modal-footer">
-            <div class="form-group">
-                <div class="addCont">
-                    <button class="btn btn-default addButton" ng-click="addItem(modalbody)">Сохранить</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="cancelCont">
-                    <button class="btn btn-default cancelButton" ng-click="cancel()">Отменить</button>
-                </div>
-            </div>
-        </div>
+            </form>
         </script>
     </div>
 </body>

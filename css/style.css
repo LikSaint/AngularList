@@ -278,3 +278,6 @@ td{
 		padding-left: 6px;
 	}
 }
+.my-messages {
+	transition:1s linear all;
+}

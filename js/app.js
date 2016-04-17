@@ -122,9 +122,9 @@ angular.module('purchaseApp').controller('ModalInstanceCtrl', function ($scope, 
         $scope.money = $scope.list.items[$scope.currentID - 1].money;
         $scope.comment = $scope.list.items[$scope.currentID - 1].comment;
     }
-    $scope.addItem = function (modalbody1) {
-        console.log(modalbody1);
-        if (modalbody1.$valid) {
+    $scope.addItem = function (modalForm) {
+        modalForm.addButton.$touched = true;
+        if (modalForm.$valid) {
             $uibModalInstance.close($scope);
         }
     };
@@ -143,7 +143,7 @@ purchaseApp.directive('commentcheck', function () {
                     return comment;
                 } else {
                     ctrl.$setValidity('commentcheck', false);
-                    return comment;
+                    return undefined;
                 }
             });
         }
@@ -155,11 +155,9 @@ purchaseApp.directive('moneycheck', function () {
         link: function (scope, elm, attrs, ctrl) {
             ctrl.$parsers.unshift(function (money) {
                 if (/-?[1-9]+.?[1-9]{0,2}/.test(money) && (money < 1000 && money > -1000 && money != 0)) {
-                    console.log("valid");
                     ctrl.$setValidity('moneycheck', true);
                     return money;
                 } else {
-                    console.log("invalid");
                     ctrl.$setValidity('moneycheck', false);
                     return undefined;
                 }
